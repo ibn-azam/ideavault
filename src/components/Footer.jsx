@@ -19,11 +19,11 @@ const companyLinks = [
 ];
 
 const socialLinks = [
-    { label: 'Twitter', href: 'https://twitter.com', icon: <FaTwitter/> },
-    { label: 'Facebook', href: 'https://facebook.com', icon: <FaFacebook /> },
-    { label: 'Instagram', href: 'https://instagram.com', icon: <FaInstagram/> },
-    { label: 'LinkedIn', href: 'https://linkedin.com', icon: <FaLinkedin/> },
-    { label: 'GitHub', href: 'https://github.com', icon: <FaGithub/> },
+    { label: 'Twitter', href: 'https://twitter.com', icon: FaTwitter },
+    { label: 'Facebook', href: 'https://facebook.com', icon: FaFacebook },
+    { label: 'Instagram', href: 'https://instagram.com', icon: FaInstagram },
+    { label: 'LinkedIn', href: 'https://linkedin.com', icon: FaLinkedin },
+    { label: 'GitHub', href: 'https://github.com', icon: FaGithub },
 ];
 
 const Footer = () => {
@@ -51,8 +51,8 @@ const Footer = () => {
 
                         {/* socials */}
                         <div className='mt-5 flex items-center gap-2'>
-                            {socialLinks.map(({ label, href, icon }) => (
-                                <Link
+                            {socialLinks.map(({ label, href, icon: Icon }) => (
+                                <a
                                     key={label}
                                     href={href}
                                     target='_blank'
@@ -60,8 +60,8 @@ const Footer = () => {
                                     aria-label={label}
                                     className='flex h-9 w-9 items-center justify-center rounded-md text-gray-600 transition-colors hover:bg-[#EEF2FF] hover:text-[#4F46E5]'
                                 >
-                                    <icon size={18} />
-                                </Link>
+                                    <Icon size={18} />
+                                </a>
                             ))}
                         </div>
                     </div>
