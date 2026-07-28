@@ -10,7 +10,9 @@ import {
   Select,
   Card,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddIdeaPage = () => {
 
@@ -18,7 +20,7 @@ const AddIdeaPage = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const idea = Object.fromEntries(formData.entries());
-    console.log(idea);
+    
 
     const res = await fetch('http://localhost:5000/idea', {
         method: 'POST',
@@ -28,12 +30,13 @@ const AddIdeaPage = () => {
         body: JSON.stringify(idea),
     });
     const data = await res.json();
-    console.log(data);
+    toast.success('Idea added successfully')
+    redirect('/ideas')
 };
 
   return (
     <div className="container mx-auto my-4">
-      <h2 className="text-center text-2xl font-bold my-2 text-[#101828    ]">
+      <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
         Add Your Idea
       </h2>
       <Card>
@@ -42,7 +45,7 @@ const AddIdeaPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Destination Name */}
             <div className="md:col-span-2">
-              <TextField name="ideaTtile" isRequired>
+              <TextField name="ideaTitle" isRequired>
                 <Label>Idea Title</Label>
                 <Input placeholder="Bali Paradise" className="rounded-2xl" />
                 <FieldError />
@@ -91,6 +94,10 @@ const AddIdeaPage = () => {
                     </ListBox.Item>
                     <ListBox.Item id="Bussiness" textValue="Bussiness">
                       Bussiness
+                      <ListBox.ItemIndicator />
+                    </ListBox.Item>
+                    <ListBox.Item id="Bussiness" textValue="Bussiness">
+                      Travel
                       <ListBox.ItemIndicator />
                     </ListBox.Item>
                   </ListBox>
@@ -177,7 +184,7 @@ const AddIdeaPage = () => {
             
             type="submit"
             variant="outline"
-            className=" rounded-none w-full bg-[#4F46E5] text-white"
+            className=" w-full bg-[#4F46E5] text-white rounded-lg"
           >
             Add Idea
           </Button>
