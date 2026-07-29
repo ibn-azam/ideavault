@@ -1,8 +1,10 @@
 import { Button, Card, CloseButton } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function IdeaCard({ idea }) {
     const {
+        _id,
         ideaTitle,
         audience,
         category,
@@ -64,7 +66,9 @@ export function IdeaCard({ idea }) {
     </div>
   
    
-                    <Button className="w-full sm:w-auto bg-[#4F46E5]">View Details</Button>
+                   <Link href={`/ideas/${_id}`}>
+                         <Button className="w-full sm:w-auto bg-[#4F46E5]">View Details</Button>
+                   </Link>
                 </Card.Footer>
             </div>
         </Card>

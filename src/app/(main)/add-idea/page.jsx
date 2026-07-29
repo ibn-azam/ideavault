@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Button,
   FieldError,
@@ -15,39 +15,36 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const AddIdeaPage = () => {
-
-   const onSubmit = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const idea = Object.fromEntries(formData.entries());
-    
 
-    const res = await fetch('http://localhost:5000/idea', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(idea),
+    const res = await fetch("http://localhost:5000/idea", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(idea),
     });
     const data = await res.json();
-    toast.success('Idea added successfully')
-    redirect('/ideas')
-};
+    toast.success("Idea added successfully");
+    redirect("/ideas");
+  };
 
   return (
     <div className="container mx-auto my-4">
+      <Card>
       <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
         Add Your Idea
       </h2>
-      <Card>
-        <form onSubmit={onSubmit} 
-        className="p-10 space-y-8">
+        <form onSubmit={onSubmit} className="p-10 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Destination Name */}
             <div className="md:col-span-2">
               <TextField name="ideaTitle" isRequired>
                 <Label>Idea Title</Label>
-                <Input placeholder="Bali Paradise" className="rounded-2xl" />
+                <Input placeholder="Idea Title" className="rounded-2xl" />
                 <FieldError />
               </TextField>
             </div>
@@ -132,7 +129,7 @@ const AddIdeaPage = () => {
             </div>
 
             {/* Description */}
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 space-y-8">
               <TextField name="shortDescription" isRequired>
                 <Label>Short Description</Label>
                 <TextArea
@@ -150,8 +147,7 @@ const AddIdeaPage = () => {
                 <FieldError />
               </TextField>
               <TextField
-                name="problemStatement
-"
+                name="problemStatement"
                 isRequired
               >
                 <Label>Problem Statement</Label>
@@ -163,8 +159,7 @@ const AddIdeaPage = () => {
                 <FieldError />
               </TextField>
               <TextField
-                name="proposedSolution
-"
+                name="proposedSolution"
                 isRequired
               >
                 <Label>Proposed Solution</Label>
@@ -181,7 +176,6 @@ const AddIdeaPage = () => {
           {/* Buttons */}
 
           <Button
-            
             type="submit"
             variant="outline"
             className=" w-full bg-[#4F46E5] text-white rounded-lg"
