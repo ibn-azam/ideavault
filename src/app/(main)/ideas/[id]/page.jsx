@@ -1,18 +1,17 @@
+import { DeleteDialog } from "@/components/DeleteModal";
 import { EditModal } from "@/components/EditModal";
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaArrowLeft, FaEdit } from "react-icons/fa";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { MdDeleteForever } from "react-icons/md";
+import { FaArrowLeft, } from "react-icons/fa";
+
 
 const IdeaDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   const res = await fetch(`http://localhost:5000/idea/${id}`);
   const idea = await res.json();
-  console.log(idea);
   const {
     _id,
     ideaTitle,
@@ -35,9 +34,7 @@ const IdeaDetailsPage = async ({ params }) => {
         <div className="flex items-center justify-center gap-1">
           
           <EditModal idea={idea}/>
-          <Button variant="danger" className="w-full sm:w-auto rounded-md">
-            <MdDeleteForever /> Delete
-          </Button>
+          <DeleteDialog idea={idea}/>
         </div>
       </div>
       <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">

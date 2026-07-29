@@ -61,7 +61,7 @@ export function EditModal({idea}) {
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Heading>
-                <h2 className="text-xl font-semibold">Update Idea</h2>
+                <h4 className="text-xl font-semibold">Update Idea</h4>
               </Modal.Heading>
               <p className=" text-sm leading-5 text-muted">
                 Edit the form below and we&apos;ll get back to you.
