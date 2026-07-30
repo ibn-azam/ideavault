@@ -34,9 +34,9 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     // close mobile menu whenever the route changes
-    useEffect(() => {
-        setMenuOpen(false);
-    }, [pathname]);
+    // useEffect(() => {
+    //     setMenuOpen(false);
+    // }, [pathname]);
 
     return (
         <header className='sticky top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur-md'>
@@ -77,21 +77,23 @@ const Navbar = () => {
                         <ProfileDropdown />
                     ) : (
                         <>
-                            <Button
+                            <Link href='/login'>
+                                <Button
                                 as={Link}
-                                href='/login'
                                 variant='light'
                                 className='font-medium text-gray-700'
                             >
                                 Login
                             </Button>
-                            <Button
+                            </Link>
+                            <Link href='/signup'>
+                                <Button
                                 as={Link}
-                                href='/register'
                                 className='bg-[#4F46E5] font-medium text-white'
                             >
                                 Register
                             </Button>
+                            </Link>
                         </>
                     )}
                 </div>
@@ -119,7 +121,7 @@ const Navbar = () => {
             {/* mobile/tablet dropdown panel */}
             <div
                 className={`overflow-hidden transition-[max-height] duration-300 ease-in-out lg:hidden ${
-                    menuOpen ? 'max-h-[28rem]' : 'max-h-0'
+                    menuOpen ? 'max-h-112' : 'max-h-0'
                 }`}
             >
                 <div className='container mx-auto flex flex-col gap-1 border-t border-black/10 bg-white px-4 py-3'>
@@ -157,21 +159,23 @@ const Navbar = () => {
                             </>
                         ) : (
                             <>
-                                <Button
+                               <Link href='/login'>
+                                 <Button
                                     as={Link}
-                                    href='/login'
                                     variant='light'
                                     className='w-full font-medium text-gray-700'
                                 >
                                     Login
                                 </Button>
-                                <Button
+                               </Link>
+                               <Link href='/signup'>
+                                 <Button
                                     as={Link}
-                                    href='/register'
                                     className='w-full bg-[#4F46E5] font-medium text-white'
                                 >
                                     Register
                                 </Button>
+                               </Link>
                             </>
                         )}
                     </div>
