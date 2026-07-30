@@ -1,11 +1,12 @@
+import { CommnetBox } from "@/components/CommentBox";
+import { Comments } from "@/components/Comments";
 import { DeleteDialog } from "@/components/DeleteModal";
 import { EditModal } from "@/components/EditModal";
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaArrowLeft, } from "react-icons/fa";
-
+import { FaArrowLeft } from "react-icons/fa";
 
 const IdeaDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -27,14 +28,18 @@ const IdeaDetailsPage = async ({ params }) => {
   return (
     <div>
       <div className="max-w-4xl my-4 mx-4  sm:mx-auto flex justify-between items-center ">
-        <Link href={'/ideas'}>
-          <Button variant='ghost' className=" sm:w-auto text-[#4F46E5] border-2 rounded-md"><FaArrowLeft/> Back To Ideas</Button>
+        <Link href={"/ideas"}>
+          <Button
+            variant="ghost"
+            className=" sm:w-auto text-[#4F46E5] border-2 rounded-md"
+          >
+            <FaArrowLeft /> Back To Ideas
+          </Button>
         </Link>
-        
+
         <div className="flex items-center justify-center gap-1">
-          
-          <EditModal idea={idea}/>
-          <DeleteDialog idea={idea}/>
+          <EditModal idea={idea} />
+          <DeleteDialog idea={idea} />
         </div>
       </div>
       <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">
@@ -85,7 +90,7 @@ const IdeaDetailsPage = async ({ params }) => {
             </div>
             {/* Problem */}
             <div className="mt-4 p-3 rounded-lg bg-red-50">
-              <h4 className="font-semibold text-red-600">❗ Problem</h4>
+              <h4 className="font-semibold text-red-600">❗Problem</h4>
 
               <p className="text-sm text-gray-600 line-clamp-2">
                 {problemStatement}
@@ -100,14 +105,13 @@ const IdeaDetailsPage = async ({ params }) => {
                 {proposedSolution}
               </p>
             </div>
-
-            <Link href={`/ideas/${_id}`}>
-              <Button className="w-full sm:w-auto bg-[#4F46E5]">
-                View Details
-              </Button>
-            </Link>
           </Card.Footer>
         </div>
+      </Card>
+      <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">
+        <h2 className="text-lg font-medium">Comment</h2>
+        <CommnetBox />
+        <Comments />
       </Card>
     </div>
   );
