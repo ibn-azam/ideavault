@@ -8,7 +8,6 @@ import {
   Form,
   Input,
   Label,
-  Separator,
   TextField,
 } from "@heroui/react";
 import React from "react";

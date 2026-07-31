@@ -1,4 +1,4 @@
-import { DropdownCategory } from "@/components/Dropdown";
+import { DropdownCategory } from "@/components/ProfileDropdown";
 import { IdeaCard } from "@/components/IdeaCard";
 import { Dropdown, Input } from "@heroui/react";
 import React from "react";
