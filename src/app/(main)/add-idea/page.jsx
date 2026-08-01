@@ -33,7 +33,7 @@ const AddIdeaPage = () => {
   };
 
   return (
-    <div className="container mx-auto my-4">
+    <div className="container mx-auto my-8">
       <Card>
       <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
         Add Your Idea
