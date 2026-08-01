@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Bell } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 
 const container = {
   hidden: {},
@@ -89,13 +90,15 @@ const TrendingSectionCard = ({ trends }) => {
                   <div className="text-sm font-medium text-white">Audience</div>
                   <div className="text-xs text-white/60">{audience}</div>
                 </div>
-                <Button
+                <Link href={`/ideas/${_id}`}>
+                    <Button
                   className="bg-white text-[#101828] font-medium"
                   size="sm"
                   variant="solid"
                 >
                   View Details
                 </Button>
+                </Link>
               </CardFooter>
             </Card>
           </motion.div>

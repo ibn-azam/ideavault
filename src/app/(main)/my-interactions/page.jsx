@@ -54,7 +54,7 @@ const MyInteractionsPage = async() => {
                             </div>
                           </div>
             
-                          <Link href='/ideas'>
+                          <Link href={`/ideas/${comment.ideaId}`}>
                                 <Card.Title className="mt-2 text-xl font-semibold">
                             {comment.ideaTitle}
                           </Card.Title>
