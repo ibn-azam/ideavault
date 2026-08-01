@@ -1,6 +1,6 @@
 import { CommnetBox } from "@/components/CommentBox";
 import { Comments } from "@/components/Comments";
-import { DeleteDialog } from "@/components/DeleteModal";
+import { DeleteDialog } from "@/components/DeleteDialog";
 import { EditModal } from "@/components/EditModal";
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
@@ -25,6 +25,7 @@ const IdeaDetailsPage = async ({ params }) => {
     problemStatement,
     proposedSolution,
   } = idea;
+
   return (
     <div>
       <div className="max-w-4xl my-4 mx-4  sm:mx-auto flex justify-between items-center ">
@@ -110,8 +111,8 @@ const IdeaDetailsPage = async ({ params }) => {
       </Card>
       <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">
         <h2 className="text-lg font-medium">Comment</h2>
-        <CommnetBox />
-        <Comments />
+        <CommnetBox idea={idea}/>
+        <Comments idea={idea}/>
       </Card>
     </div>
   );

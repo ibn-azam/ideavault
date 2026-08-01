@@ -1,10 +1,13 @@
+'use client'
 import { authClient } from "@/lib/auth-client";
 import {ArrowRightFromSquare, Bulb, Comment, Gear, Person, Persons} from "@gravity-ui/icons";
 import {Avatar, Button, Dropdown, Label} from "@heroui/react";
 import Link from "next/link";
 
-export function ProfileDropdown({user}) {
-  const {name,email,image} = user;
+export function ProfileDropdown() {
+   const { data: session } = authClient.useSession();
+    const user = session?.user;
+    
   const handleSignout= async()=>{
         await authClient.signOut();
     }
@@ -13,8 +16,8 @@ export function ProfileDropdown({user}) {
       <Dropdown.Trigger className="rounded-full">
         <Avatar>
           <Avatar.Image
-            alt={name}
-            src={image}
+            alt={user.name}
+            src={user.image}
           />
           <Avatar.Fallback delayMs={600}><Person/></Avatar.Fallback>
         </Avatar>
@@ -24,14 +27,14 @@ export function ProfileDropdown({user}) {
           <div className="flex items-center gap-2">
             <Avatar size="sm">
               <Avatar.Image
-                alt={name}
-                src={image}
+                alt={user.name}
+                src={user.image}
               />
               <Avatar.Fallback delayMs={600}><Person/></Avatar.Fallback>
             </Avatar>
             <div className="flex flex-col gap-0">
-              <p className="text-sm leading-5 font-medium">{name}</p>
-              <p className="text-xs leading-none text-muted">{email}</p>
+              <p className="text-sm leading-5 font-medium">{user.name}</p>
+              <p className="text-xs leading-none text-muted">{user.email}</p>
             </div>
           </div>
         </div>
@@ -65,7 +68,7 @@ export function ProfileDropdown({user}) {
             </div>
           </Dropdown.Item>
           <Dropdown.Item id="logout" textValue="Logout" variant="danger">
-            <div onClick={handleSignout} className="flex w-full items-center justify-between gap-2">
+            <div className="flex w-full items-center justify-between gap-2">
               <Link href='/'>
                 <Button variant="none" onClick={handleSignout}>
                 <Label>Log Out</Label>

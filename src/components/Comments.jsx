@@ -1,45 +1,79 @@
-import { Button, Card, CloseButton } from "@heroui/react";
+import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { formatDistanceToNow } from "date-fns";
 
-export async function Comments() {
-  const res = await fetch("http://localhost:5000/comment");
+export async function Comments({ idea }) {
+  const { _id } = idea;
+
+  const res = await fetch("http://localhost:5000/comment", {
+    cache: "no-store",
+  });
+
   const comments = await res.json();
 
+  // Filter comments for the current idea
+  const filteredComments = comments.filter(
+    (comment) => comment.ideaId === _id
+  );
+
   return (
-    <Card className="w-full items-stretch md:flex justify-between">
-      {comments.map((comment) => (
-        <div key={comment._id} className="">
-          <div className="relative h-15 w-15  shrink-0 overflow-hidden rounded-2xl sm:h-15 sm:w-15">
-            <Image
-              width={100}
-              height={100}
-              alt="Cherries"
-              className="pointer-events-none absolute inset-0 h-full w-full scale-125 object-cover select-none"
-              loading="lazy"
-              src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/docs/cherries.jpeg"
-            />
+    <Card className="w-full p-4">
+      {filteredComments.length > 0 ? (
+        filteredComments.map((comment) => (
+          <div
+            key={comment._id}
+            className="space-y-2 border-b border-gray-300 pb-4 mb-4 last:border-b-0"
+          >
+            <div className="flex justify-between items-start gap-4">
+              <div className="flex items-start gap-3">
+                <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                  <Image
+                    src={comment.userImage}
+                    alt={comment.userName}
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                  />
+                </div>
+
+                <div>
+                  <Card.Title className="text-lg font-semibold">
+                    {comment.userName}
+                  </Card.Title>
+
+                  <Card.Description className="text-sm text-gray-500">
+                    {formatDistanceToNow(new Date(comment.createdAt), {
+                      addSuffix: true,
+                    })}
+                  </Card.Description>
+
+                  <p className="mt-2 text-gray-700">{comment.comment}</p>
+                </div>
+              </div>
+
+              <div className="flex  gap-2">
+                <Button
+                  isIconOnly
+                  variant="ghost"
+                  className="border border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5] hover:text-white"
+                >
+                  <FaEdit />
+                </Button>
+
+                <Button isIconOnly variant="danger">
+                  <MdDeleteForever />
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="flex justify-between gap-3 ">
-            <Card.Header className="gap-1">
-              <Card.Title className="pr-8">Become an ACME Creator!</Card.Title>
-              <Card.Description>{comment.comment}</Card.Description>
-            </Card.Header>
-            <Card.Footer className="mt-auto flex gap-2 items-center">
-              <Button
-                variant="ghost"
-                className="w-auto border border-[#4F46E5] rounded-md text-[#4F46E5] hover:border-none hover:bg-[#4F46E5] hover:text-white"
-              >
-                <FaEdit />
-              </Button>
-              <Button variant="danger" className=" w-auto rounded-md">
-                <MdDeleteForever />
-              </Button>
-            </Card.Footer>
-          </div>
+        ))
+      ) : (
+        <div className="py-6 text-center text-gray-500">
+          No comments yet.
         </div>
-      ))}
+      )}
     </Card>
   );
 }
