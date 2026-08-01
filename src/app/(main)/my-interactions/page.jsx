@@ -7,6 +7,9 @@ import React from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { formatDistanceToNow } from "date-fns";
+import { DeleteCommentDialog } from '@/components/DeleteCommentDialog';
+import Link from 'next/link';
+import { EditCommentModal } from '@/components/EditCommentModal';
 
 const MyInteractionsPage = async() => {
     const session = await auth.api.getSession({
@@ -21,8 +24,8 @@ const MyInteractionsPage = async() => {
     
     return (
         <div className='container mx-auto my-4'>
-            <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">My Interactions</h2>
-            <Card className="w-full items-stretch md:flex justify-between">
+            <h2 className="text-center text-2xl font-bold my-4 text-[#101828]">My Interactions</h2>
+            <Card className="w-full items-stretch md:flex justify-between my-4">
                   {comments.map((comment) => (
                     <div
                       key={comment._id}
@@ -51,20 +54,18 @@ const MyInteractionsPage = async() => {
                             </div>
                           </div>
             
+                          <Link href='/ideas'>
+                                <Card.Title className="mt-2 text-xl font-semibold">
+                            {comment.ideaTitle}
+                          </Card.Title>
+                          </Link>
                           <Card.Description className="mt-2 text-lg font-medium">
                             {comment.comment}
                           </Card.Description>
                         </Card.Header>
                         <Card.Footer className="mt-auto flex gap-2 items-center">
-                          <Button
-                            variant="ghost"
-                            className="w-auto border border-[#4F46E5] rounded-md text-[#4F46E5] hover:border-none hover:bg-[#4F46E5] hover:text-white"
-                          >
-                            <FaEdit />
-                          </Button>
-                          <Button variant="danger" className=" w-auto rounded-md">
-                            <MdDeleteForever />
-                          </Button>
+                          <EditCommentModal comment={comment}/>
+                          <DeleteCommentDialog comment={comment}/>
                         </Card.Footer>
                       </div>
                     </div>

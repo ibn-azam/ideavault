@@ -3,6 +3,8 @@ import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { formatDistanceToNow } from "date-fns";
+import { DeleteCommentDialog } from "./DeleteCommentDialog";
+import { EditCommentModal } from "./EditCommentModal";
 
 export async function Comments({ idea }) {
   const { _id } = idea;
@@ -17,6 +19,8 @@ export async function Comments({ idea }) {
   const filteredComments = comments.filter(
     (comment) => comment.ideaId === _id
   );
+
+  
 
   return (
     <Card className="w-full p-4">
@@ -54,17 +58,9 @@ export async function Comments({ idea }) {
               </div>
 
               <div className="flex  gap-2">
-                <Button
-                  isIconOnly
-                  variant="ghost"
-                  className="border border-[#4F46E5] text-[#4F46E5] hover:bg-[#4F46E5] hover:text-white"
-                >
-                  <FaEdit />
-                </Button>
+                <EditCommentModal comment={comment}/>
 
-                <Button isIconOnly variant="danger">
-                  <MdDeleteForever />
-                </Button>
+                <DeleteCommentDialog comment={comment}/>
               </div>
             </div>
           </div>

@@ -1,18 +1,20 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Button, TextArea } from "@heroui/react";
-import { redirect } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export function CommnetBox({idea}) {
+  const router = useRouter()
   const { data: session } = authClient.useSession();
   const user = session?.user;
-  console.log(user)
+  
   if (!idea) return null;
   const{_id,ideaTitle} = idea;  
     
 
   const handleSubmitComment = async (e) => {
+    
     e.preventDefault();
      if (!user) {
     toast.error("No user session — can't submit comment");
@@ -40,7 +42,8 @@ export function CommnetBox({idea}) {
       body: JSON.stringify(commentData),
     });
     const data = await res.json();
-    toast.success('Comment Posted Successfully')
+    toast.success('Comment Posted Successfully');
+    router.refresh();
   };
   return (
     <form onSubmit={handleSubmitComment}>

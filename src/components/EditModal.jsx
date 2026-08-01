@@ -43,7 +43,6 @@ export function EditModal({idea}) {
           body: JSON.stringify(idea),
         });
         const data = await res.json();
-        console.log(data)
         toast.success("Idea updated successfully");
         redirect("/ideas");
       };
