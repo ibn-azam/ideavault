@@ -41,15 +41,10 @@ export function ProfileDropdown() {
         <Dropdown.Menu>
           
           
-          <Dropdown.Item id="profile" textValue="profile">
-            <div className="flex w-full items-center justify-between gap-2">
-              <Label>Profile</Label>
-              <Persons className="size-3.5 text-muted" />
-            </div>
-          </Dropdown.Item>
+          
           <Dropdown.Item id="my-ideas" textValue="My-ideas">
             <div className="flex w-full items-center justify-between gap-2">
-              <Link href='/ideas'>
+              <Link href='/my-ideas'>
                 <Label>My-Ideas</Label>
               </Link>
               <Bulb className="size-3.5 text-muted"/>
@@ -57,7 +52,9 @@ export function ProfileDropdown() {
           </Dropdown.Item>
           <Dropdown.Item id="my-interactions" textValue="My-interactions">
             <div className="flex w-full items-center justify-between gap-2">
-              <Label>My-Interactions</Label>
+             <Link href='/my-interactions'>
+               <Label>My-Interactions</Label>
+             </Link>
               <Comment className="size-3.5 text-muted"/>
             </div>
           </Dropdown.Item>

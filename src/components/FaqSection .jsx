@@ -19,7 +19,7 @@ const faqs = [
     category: 'General',
     question: 'Is it free to share an idea?',
     answer:
-      'Yes. Posting an idea is free, always. We want to lower the barrier for anyone with a promising concept to get it in front of people.',
+      'Yes. Posting an idea is free, always.However,you have to login to your account first. We want to lower the barrier for anyone with a promising concept to get it in front of people.',
   },
   {
     id: '3',
@@ -54,7 +54,7 @@ const faqs = [
     category: 'Account',
     question: 'Do I need an account to browse ideas?',
     answer:
-      "No. Browsing and reading is open to everyone. You'll only need an account to post, comment, or vote.",
+      "Yes. Browsing and reading is open to everyone.But, You'll only need an account to post, comment, or vote.",
   },
   {
     id: '8',

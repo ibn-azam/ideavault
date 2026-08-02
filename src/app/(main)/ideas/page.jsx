@@ -3,7 +3,7 @@ import { IdeaCard } from "@/components/IdeaCard";
 import { Dropdown, Input } from "@heroui/react";
 import React from "react";
 
-const IdeasPage = async () => {
+const IdeasPage = async() => {
   const res = await fetch("http://localhost:5000/idea");
   const ideas = await res.json();
   return (
@@ -12,7 +12,7 @@ const IdeasPage = async () => {
         Ideas
       </h2>
       <Input className="w-full" placeholder="Search Here......" />
-      <div className="grid grid-cols-1  gap-2 sm:grid-cols-3 sm:gap-4 my-4">
+      <div className="grid grid-cols-1 gap-2 m-4  sm:grid-cols-3 sm:gap-4 sm:my-4">
         {ideas.map((idea) => (
           <IdeaCard idea={idea} key={idea._id}>
           </IdeaCard>

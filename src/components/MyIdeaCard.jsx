@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from 'framer-motion';
 
-export function IdeaCard({ idea }) {
+export function MyIdeaCard({ idea }) {
     const {
         _id,
         ideaTitle,

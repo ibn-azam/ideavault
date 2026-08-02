@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -15,19 +16,35 @@ import React from "react";
 import { toast } from "react-toastify";
 
 const AddIdeaPage = () => {
+  const { data: session } = authClient.useSession();
+        const user = session?.user; 
+        
   const onSubmit = async (e) => {
     e.preventDefault();
+      if (!user) {
+        toast.error("No user session — can't submit comment");
+        return;
+      }
     const formData = new FormData(e.currentTarget);
     const idea = Object.fromEntries(formData.entries());
+    const ideaData = {
+      ...idea,
+      userId : user.id,
+      userName : user.name,
+      userEmail : user.email,
+      userImage : user.image,
+      createdAt : new Date(),
+    }
 
     const res = await fetch("http://localhost:5000/idea", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(idea),
+      body: JSON.stringify(ideaData),
     });
     const data = await res.json();
+    console.log(data)
     toast.success("Idea added successfully");
     redirect("/ideas");
   };
