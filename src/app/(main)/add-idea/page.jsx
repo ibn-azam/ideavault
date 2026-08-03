@@ -11,30 +11,30 @@ import {
   Select,
   Card,
 } from "@heroui/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "react-toastify";
 
 const AddIdeaPage = () => {
   const { data: session } = authClient.useSession();
-        const user = session?.user; 
-        
+  const user = session?.user;
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
-      if (!user) {
-        toast.error("No user session — can't submit comment");
-        return;
-      }
+    if (!user) {
+      toast.error("No user session — can't submit comment");
+      return;
+    }
     const formData = new FormData(e.currentTarget);
     const idea = Object.fromEntries(formData.entries());
     const ideaData = {
       ...idea,
-      userId : user.id,
-      userName : user.name,
-      userEmail : user.email,
-      userImage : user.image,
-      createdAt : new Date(),
-    }
+      userId: user.id,
+      userName: user.name,
+      userEmail: user.email,
+      userImage: user.image,
+      createdAt: new Date(),
+    };
 
     const res = await fetch("http://localhost:5000/idea", {
       method: "POST",
@@ -44,17 +44,16 @@ const AddIdeaPage = () => {
       body: JSON.stringify(ideaData),
     });
     const data = await res.json();
-    console.log(data)
     toast.success("Idea added successfully");
-    redirect("/ideas");
+    router.push("/ideas");
   };
 
   return (
     <div className="container mx-auto my-8">
       <Card>
-      <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
-        Add Your Idea
-      </h2>
+        <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
+          Add Your Idea
+        </h2>
         <form onSubmit={onSubmit} className="p-10 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Destination Name */}
@@ -163,10 +162,7 @@ const AddIdeaPage = () => {
                 />
                 <FieldError />
               </TextField>
-              <TextField
-                name="problemStatement"
-                isRequired
-              >
+              <TextField name="problemStatement" isRequired>
                 <Label>Problem Statement</Label>
                 <TextArea
                   placeholder="Describe the problem statement
@@ -175,10 +171,7 @@ const AddIdeaPage = () => {
                 />
                 <FieldError />
               </TextField>
-              <TextField
-                name="proposedSolution"
-                isRequired
-              >
+              <TextField name="proposedSolution" isRequired>
                 <Label>Proposed Solution</Label>
                 <TextArea
                   placeholder="Describe the proposed solution
