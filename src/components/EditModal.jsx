@@ -13,11 +13,12 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export function EditModal({idea}) {
+   const router = useRouter();
     const {
     _id,
     ideaTitle,
@@ -44,7 +45,7 @@ export function EditModal({idea}) {
         });
         const data = await res.json();
         toast.success("Idea updated successfully");
-        redirect("/ideas");
+        router.push("/ideas");
       };
   return (
     <Modal>
@@ -59,8 +60,8 @@ export function EditModal({idea}) {
           <Modal.Dialog className="sm:max-w-xl">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Heading>
-                <h4 className="text-xl font-semibold">Update Idea</h4>
+              <Modal.Heading className="text-xl font-semibold">
+                Update Idea
               </Modal.Heading>
               <p className=" text-sm leading-5 text-muted">
                 Edit the form below and we&apos;ll get back to you.
