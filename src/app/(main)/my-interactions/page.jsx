@@ -16,10 +16,18 @@ const MyInteractionsPage = async() => {
         headers: await headers()
     })
 
+    const {token} = await auth.api.getToken({
+        headers: await headers(),
+      })
+
     const user = session?.user
     
 
-    const res = await fetch(`http://localhost:5000/comment/${user?.id}`)
+    const res = await fetch(`http://localhost:5000/comment/${user?.id}`,{
+      headers:{
+        authorization : `Bearer ${token}`
+      }
+    })
     const comments = await res.json()
     
     return (

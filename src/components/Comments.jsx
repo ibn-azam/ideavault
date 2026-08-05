@@ -7,9 +7,17 @@ import { DeleteCommentDialog } from "./DeleteCommentDialog";
 import { EditCommentModal } from "./EditCommentModal";
 
 export async function Comments({ idea }) {
+  const {token} = await auth.api.getToken({
+      headers: await headers(),
+    })
   const { _id } = idea;
 
-  const res = await fetch("http://localhost:5000/comment", {
+  const res = await fetch("http://localhost:5000/comment",{
+    headers:{
+      authorization : `Bearer ${token}`
+    }
+  }, {
+    
     cache: "no-store",
   });
 

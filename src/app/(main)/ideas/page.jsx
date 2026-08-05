@@ -1,7 +1,16 @@
 import IdeasContainer from "@/components/IdeasContainer";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const IdeasPage = async () => {
-  const res = await fetch("http://localhost:5000/idea", {
+  const {token} = await auth.api.getToken({
+      headers: await headers(),
+    })
+  const res = await fetch("http://localhost:5000/idea",{
+    headers:{
+      authorization : `Bearer ${token}`
+    }
+  }, {
     cache: "no-store",
   });
 

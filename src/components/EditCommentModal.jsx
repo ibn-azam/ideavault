@@ -9,6 +9,7 @@ export function EditCommentModal({ comment }) {
   const router = useRouter();
 
   const handleSubmitComment = async (e) => {
+    const { data: tokenData } = await authClient.token();
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -23,6 +24,7 @@ export function EditCommentModal({ comment }) {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData.token}`,
         },
         body: JSON.stringify(updatedComment),
       }

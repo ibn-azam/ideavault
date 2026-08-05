@@ -1,6 +1,7 @@
 "use client";
 
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -32,6 +33,7 @@ export function EditModal({idea}) {
     proposedSolution,
   } = idea;
     const onSubmit = async (e) => {
+      const {data : token} = await authClient.token();
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const idea = Object.fromEntries(formData.entries());
@@ -40,6 +42,7 @@ export function EditModal({idea}) {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            authorization : `Bearer ${tokenData?.token}`
           },
           body: JSON.stringify(idea),
         });

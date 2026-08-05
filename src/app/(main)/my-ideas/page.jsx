@@ -8,9 +8,17 @@ const MyIdeasPage = async () => {
     headers: await headers(),
   });
 
+  const {token} = await auth.api.getToken({
+    headers: await headers(),
+  })
+
   const user = session?.user;
 
-  const res = await fetch(`http://localhost:5000/my-ideas/${user.id}`);
+  const res = await fetch(`http://localhost:5000/my-ideas/${user.id}`,{
+    headers:{
+      authorization : `Bearer ${token}`
+    }
+  });
   const myIdeas = await res.json();
   return (
     <div className="container mx-auto my-4">

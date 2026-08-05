@@ -2,7 +2,9 @@ import { CommnetBox } from "@/components/CommentBox";
 import { Comments } from "@/components/Comments";
 import { DeleteDialog } from "@/components/DeleteDialog";
 import { EditModal } from "@/components/EditModal";
+import { auth } from "@/lib/auth";
 import { Button, Card } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -10,8 +12,15 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const IdeaDetailsPage = async ({ params }) => {
   const { id } = await params;
+  const {token} = await auth.api.getToken({
+    headers: await headers()
+  })
 
-  const res = await fetch(`http://localhost:5000/idea/${id}`);
+  const res = await fetch(`http://localhost:5000/idea/${id}`,{
+    headers:{
+      authorization : `Bearer ${token}`
+    }
+  });
   const idea = await res.json();
   const {
     _id,
