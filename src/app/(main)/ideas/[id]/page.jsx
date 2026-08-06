@@ -11,10 +11,15 @@ import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 
 const IdeaDetailsPage = async ({ params }) => {
-  const { id } = await params;
+
+  const session = await auth.api.getSession({
+  headers: await headers(),
+});
+
   const {token} = await auth.api.getToken({
     headers: await headers()
   })
+  const { id } = await params;
 
   const res = await fetch(`http://localhost:5000/idea/${id}`,{
     headers:{

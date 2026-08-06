@@ -26,7 +26,7 @@ const cardVariant = {
 };
 
 const TrendingSectionCard = ({ trends }) => {
-  if (!Array.isArray(trends) || trends.length === 0) {
+  if (trends.length === 0) {
     return (
       <div className="container mx-auto my-16 text-center text-[#101828]">
         No trending startups right now.
@@ -60,7 +60,6 @@ const TrendingSectionCard = ({ trends }) => {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <Card
-              isBlurred
               className="group relative h-80 overflow-hidden rounded-2xl border border-white/10 shadow-lg"
             >
               {/* Background image */}

@@ -60,7 +60,9 @@ export function ProfileDropdown() {
           </Dropdown.Item>
           <Dropdown.Item id="profile-management" textValue="Profile-management">
             <div className="flex w-full items-center justify-between gap-2">
-              <Label>Profile Management</Label>
+              <Link href='profile-management'>
+                <Label>Profile Management</Label>
+              </Link>
               <Gear className="size-3.5 text-muted" />
             </div>
           </Dropdown.Item>

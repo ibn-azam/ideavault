@@ -4,8 +4,6 @@ import { Button, Card } from '@heroui/react';
 import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
-import { FaEdit } from 'react-icons/fa';
-import { MdDeleteForever } from 'react-icons/md';
 import { formatDistanceToNow } from "date-fns";
 import { DeleteCommentDialog } from '@/components/DeleteCommentDialog';
 import Link from 'next/link';

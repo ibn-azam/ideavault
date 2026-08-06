@@ -8,7 +8,7 @@ export function CommnetBox({ idea }) {
   const router = useRouter();
   const { data: session } = authClient.useSession();
   const user = session?.user;
-
+  
   if (!idea) return null;
   const { _id, ideaTitle } = idea;
 
@@ -41,9 +41,16 @@ export function CommnetBox({ idea }) {
       },
       body: JSON.stringify(commentData),
     });
+
+      if (!res.ok) {
+    toast.error("Failed to post comment");
+    return;
+  }
+
     const data = await res.json();
     toast.success("Comment Posted Successfully");
     router.refresh();
+    
   };
   return (
     <form onSubmit={handleSubmitComment}>

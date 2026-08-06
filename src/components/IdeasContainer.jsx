@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Input, Select, SelectItem } from "@heroui/react";
 import { IdeaCard } from "./IdeaCard";
+import { authClient } from "@/lib/auth-client";
+
 
 export default function IdeasContainer({ initialIdeas }) {
   const [ideas, setIdeas] = useState(initialIdeas);
@@ -11,8 +13,13 @@ export default function IdeasContainer({ initialIdeas }) {
 
   useEffect(() => {
     const fetchIdeas = async () => {
+      const { data: tokenData } = await authClient.token();
       const res = await fetch(
-        `http://localhost:5000/idea?search=${search}&category=${category}`
+        `http://localhost:5000/idea?search=${search}&category=${category}`,{
+          headers: {
+            authorization : `Bearer ${tokenData?.token}`
+          }
+        }
       );
 
       const data = await res.json();

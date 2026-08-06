@@ -1,17 +1,18 @@
+
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
-import { FaEdit } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
 import { formatDistanceToNow } from "date-fns";
 import { DeleteCommentDialog } from "./DeleteCommentDialog";
 import { EditCommentModal } from "./EditCommentModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function Comments({ idea }) {
-  const {token} = await auth.api.getToken({
-      headers: await headers(),
-    })
   const { _id } = idea;
-
+  
+  const {token} = await auth.api.getToken({
+      headers: await headers()
+    })
   const res = await fetch("http://localhost:5000/comment",{
     headers:{
       authorization : `Bearer ${token}`

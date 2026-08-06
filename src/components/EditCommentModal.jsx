@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Modal, TextArea } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { FaEdit } from "react-icons/fa";
@@ -9,7 +10,6 @@ export function EditCommentModal({ comment }) {
   const router = useRouter();
 
   const handleSubmitComment = async (e) => {
-    const { data: tokenData } = await authClient.token();
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
@@ -17,14 +17,14 @@ export function EditCommentModal({ comment }) {
     const updatedComment = {
       comment: formData.get("comment"),
     };
-
+const { data: tokenData } = await authClient.token();
     const res = await fetch(
       `http://localhost:5000/comment/${comment._id}`,
       {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          authorization: `Bearer ${tokenData.token}`,
+          authorization: `Bearer ${tokenData?.token}`,
         },
         body: JSON.stringify(updatedComment),
       }

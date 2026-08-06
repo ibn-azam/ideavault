@@ -33,11 +33,11 @@ export function EditModal({idea}) {
     proposedSolution,
   } = idea;
     const onSubmit = async (e) => {
-      const {data : token} = await authClient.token();
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        const idea = Object.fromEntries(formData.entries());
-    
+      e.preventDefault();
+      const formData = new FormData(e.currentTarget);
+      const idea = Object.fromEntries(formData.entries());
+      
+      const { data: tokenData } = await authClient.token();
         const res = await fetch(`http://localhost:5000/idea/${_id}`, {
           method: "PATCH",
           headers: {
