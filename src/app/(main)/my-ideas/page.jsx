@@ -22,7 +22,7 @@ const MyIdeasPage = async () => {
   const myIdeas = await res.json();
   return (
     <div className="container mx-auto my-4">
-      <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
+      <h2 className="text-center text-4xl font-bold my-2 text-title">
         My Ideas
       </h2>
       <div className="grid grid-cols-1 gap-2 m-4  sm:grid-cols-3 sm:gap-4 sm:my-4">

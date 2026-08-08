@@ -36,14 +36,20 @@ const TrendingSectionCard = ({ trends }) => {
 
   return (
     <div className="container mx-auto my-12 px-4">
-      <motion.h2
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="text-center text-3xl font-bold mb-8 text-[#101828]"
-      >
-        Trending Startups
-      </motion.h2>
+      <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-5xl font-bold text-title mb-2">
+                  Ideas on the Rise
+                </h2>
+                <p className="text-title/60">
+                 Discover the ideas gaining momentum and making an impact.
+                </p>
+              </motion.div>
 
       <motion.div
         variants={container}

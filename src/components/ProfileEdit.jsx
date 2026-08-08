@@ -99,7 +99,7 @@ export default function EditProfile({ user }) {
             height={200}
             alt={form.name}
               src={form.image}
-              className="w-32 h-32 text-large"
+              className="w-32 h-32 rounded-full text-large"
             />
 
            
@@ -113,6 +113,7 @@ export default function EditProfile({ user }) {
             value={form.name}
             onChange={handleChange}
             variant="bordered"
+            className="border border-gray-500"
           />
 
           {/* Email */}
@@ -124,6 +125,7 @@ export default function EditProfile({ user }) {
             isReadOnly
             variant="bordered"
             description="Email cannot be changed here."
+            className="border border-gray-500"
           />
          </div>
            {/* <Input

@@ -52,17 +52,17 @@ export async function Comments({ idea }) {
                 </div>
 
                 <div>
-                  <Card.Title className="text-lg font-semibold">
+                  <Card.Title className="text-lg font-semibold text-title">
                     {comment.userName}
                   </Card.Title>
 
-                  <Card.Description className="text-sm text-gray-500">
+                  <Card.Description className="text-title/60 text-sm ">
                     {formatDistanceToNow(new Date(comment.createdAt), {
                       addSuffix: true,
                     })}
                   </Card.Description>
 
-                  <p className="mt-2 text-gray-700">{comment.comment}</p>
+                  <p className="mt-2 text-title/80">{comment.comment}</p>
                 </div>
               </div>
 

@@ -22,7 +22,7 @@ export function IdeaCard({ idea }) {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="h-full"
     >
-      <Card className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#101828]/10 shadow-sm hover:shadow-lg transition-shadow duration-300">
+      <Card className="flex h-full flex-col overflow-hidden rounded-2xl border  shadow-sm hover:shadow-lg transition-shadow duration-300 backdrop-blur-md">
         {/* Image */}
         <div className="relative h-44 w-full shrink-0 sm:h-48 rounded-lg">
           <Image
@@ -41,18 +41,18 @@ export function IdeaCard({ idea }) {
 
         {/* Content */}
         <div className="flex flex-1 flex-col p-4 sm:p-5">
-          <h2 className="text-base sm:text-lg font-semibold text-[#101828] leading-snug line-clamp-2">
+          <h2 className="text-title sm:text-lg font-semibold  leading-snug line-clamp-2">
             {ideaTitle}
           </h2>
 
           {audience && (
-            <p className="mt-1 flex items-center gap-1 text-xs sm:text-sm text-[#101828]/50">
+            <p className="mt-1 flex items-center gap-1 text-xs sm:text-sm text-para">
               <Users size={13} />
               {audience}
             </p>
           )}
 
-          <p className="mt-3 flex-1 text-sm text-[#101828]/60 leading-relaxed line-clamp-3">
+          <p className="mt-3 flex-1 text-sm text-para leading-relaxed line-clamp-3">
             {shortDescription}
           </p>
 

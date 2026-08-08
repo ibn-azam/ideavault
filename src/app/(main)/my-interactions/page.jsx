@@ -30,8 +30,8 @@ const MyInteractionsPage = async() => {
     
     return (
         <div className='container mx-auto my-4'>
-            <h2 className="text-center text-2xl font-bold my-4 text-[#101828]">My Interactions</h2>
-            <Card className="w-full items-stretch md:flex justify-between my-4">
+            <h2 className="text-center text-4xl font-bold my-4 text-title">My Interactions</h2>
+            <Card className="w-full items-stretch md:flex justify-between my-4 border">
                   {comments.map((comment) => (
                     <div
                       key={comment._id}
@@ -51,8 +51,8 @@ const MyInteractionsPage = async() => {
                               />
                             </div>
                             <div>
-                              <Card.Title className="text-lg font-medium">{comment.userName}</Card.Title>
-                              <Card.Description>
+                              <Card.Title className="text-lg font-medium text-para">{comment.userName}</Card.Title>
+                              <Card.Description className='text-title/60'>
                                 {formatDistanceToNow(new Date(comment.createdAt), {
                                   addSuffix: true,
                                 })}
@@ -65,7 +65,7 @@ const MyInteractionsPage = async() => {
                             {comment.ideaTitle}
                           </Card.Title>
                           </Link>
-                          <Card.Description className="mt-2 text-lg font-medium">
+                          <Card.Description className="mt-2 text-lg font-medium text-title/80">
                             {comment.comment}
                           </Card.Description>
                         </Card.Header>

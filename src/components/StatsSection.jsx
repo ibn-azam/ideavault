@@ -93,7 +93,7 @@ const item = {
 
 const StatsSection = () => {
   return (
-    <div className="bg-[#101828] py-16">
+    <div className="bg-[#101828]/[0.02] py-16">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -102,10 +102,10 @@ const StatsSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-white mb-2">
+          <h2 className="text-5xl font-bold text-title mb-2">
             Trusted by builders everywhere
           </h2>
-          <p className="text-white/60">
+          <p className="text-title/60">
             Join a growing community turning ideas into reality
           </p>
         </motion.div>
@@ -123,15 +123,15 @@ const StatsSection = () => {
               variants={item}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              className="flex flex-col items-center text-center rounded-2xl border border-white/10 bg-white/5 px-4 py-8 backdrop-blur-sm"
+              className="flex flex-col items-center text-center rounded-2xl border border/10 bg-white/5 px-4 py-8 backdrop-blur-sm"
             >
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#4F46E5]/20">
+              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#4F46E5]/20 ">
                 <Icon className="text-[#4F46E5]" size={22} />
               </div>
-              <div className="text-3xl sm:text-4xl font-bold text-white">
+              <div className="text-3xl sm:text-4xl font-bold text-title">
                 <Counter value={value} suffix={suffix} />
               </div>
-              <div className="mt-1 text-sm text-white/60">{label}</div>
+              <div className="mt-1 text-sm text-title/60">{label}</div>
             </motion.div>
           ))}
         </motion.div>

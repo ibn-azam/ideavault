@@ -14,6 +14,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ProfileDropdown } from "./ProfileDropdown";
+import { ModeToggle } from "./ModeToogle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -41,13 +42,13 @@ const Navbar = () => {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border/10 background/80 backdrop-blur-md">
       <nav className="container mx-auto flex items-center justify-between p-4 lg:px-6">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#4F46E5] text-white">
             <Lightbulb size={18} strokeWidth={2.2} />
           </span>
-          <span className="text-xl font-bold tracking-tight text-gray-900">
+          <span className="text-xl font-bold tracking-tight text-title">
             IdeaVault
           </span>
         </Link>
@@ -63,7 +64,7 @@ const Navbar = () => {
                   className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     active
                       ? "bg-[#EEF2FF] text-[#4F46E5]"
-                      : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                      : "text-gray-500 hover:bg-gray-100 hover:text-gray-900"
                   }`}
                 >
                   {link.label}
@@ -73,8 +74,13 @@ const Navbar = () => {
           })}
         </ul>
 
+        
+
         {/* desktop auth area */}
         <div className="hidden items-center gap-2 lg:flex">
+          <div>
+          <ModeToggle/>
+        </div>
           {user ? (
             <ProfileDropdown user={user}/>
           ) : (
@@ -95,6 +101,9 @@ const Navbar = () => {
 
         {/* mobile/tablet right side: avatar (if logged in) + hamburger */}
         <div className="flex items-center gap-2 lg:hidden">
+          <div>
+          <ModeToggle/>
+        </div>
           {user && <ProfileDropdown user={user}/>}
           <button
             onClick={() => setMenuOpen((prev) => !prev)}
@@ -113,7 +122,7 @@ const Navbar = () => {
           menuOpen ? "max-h-112" : "max-h-0"
         }`}
       >
-        <div className="container mx-auto flex flex-col gap-1 border-t border-black/10 bg-white px-4 py-3">
+        <div className="container mx-auto flex flex-col gap-1 border-t border/10 background px-4 py-3">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -122,8 +131,8 @@ const Navbar = () => {
                 href={link.href}
                 className={`rounded-md px-3 py-2.5 text-base font-medium transition-colors ${
                   active
-                    ? "bg-[#EEF2FF] text-[#4F46E5]"
-                    : "text-gray-700 hover:bg-gray-100"
+                    ? "background border text-[#4F46E5]"
+                    : "text-title hover:text-[#4F46E5] hover:bg-gray-100"
                 }`}
               >
                 {link.label}

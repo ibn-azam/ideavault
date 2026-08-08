@@ -31,9 +31,9 @@ export default function IdeasContainer({ initialIdeas }) {
 
   return (
     <>
-      <div className="container mx-auto w-lg sm:w-full grid grid-cols-3 sm:grid-cols-5 gap-2 my-4">
+      <div className="container mx-auto w-lg sm:w-full grid grid-cols-3 sm:grid-cols-5 gap-2 my-8">
         <Input
-        className='grid col-span-2 sm:col-span-4'
+        className='grid col-span-2 sm:col-span-4 border  placeholder:text-title'
           placeholder="Search ideas..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -41,7 +41,7 @@ export default function IdeasContainer({ initialIdeas }) {
 
         
 <select
-  className="border rounded-lg p-2"
+  className="border bg-gray-900  rounded-lg p-2 text-white "
   value={category}
   onChange={(e) => setCategory(e.target.value)}
 >

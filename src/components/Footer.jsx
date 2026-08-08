@@ -30,7 +30,7 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className='border-t border-black/10 bg-white'>
+        <footer className='border-t border background'>
             <div className='container mx-auto px-4 py-10 lg:px-6 lg:py-14'>
                 <div className='grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4'>
                     {/* brand + about */}
@@ -39,7 +39,7 @@ const Footer = () => {
                             <span className='flex h-8 w-8 items-center justify-center rounded-lg bg-[#4F46E5] text-white'>
                                 <Lightbulb size={18} strokeWidth={2.2} />
                             </span>
-                            <span className='text-xl font-bold tracking-tight text-gray-900'>
+                            <span className='text-xl font-bold tracking-tight text-title'>
                                 IdeaVault
                             </span>
                         </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
 
                     {/* platform links */}
                     <div>
-                        <h3 className='text-sm font-semibold text-gray-900'>
+                        <h3 className='text-sm font-semibold text-title'>
                             Platform
                         </h3>
                         <ul className='mt-4 flex flex-col gap-3'>
@@ -87,7 +87,7 @@ const Footer = () => {
 
                     {/* company links */}
                     <div>
-                        <h3 className='text-sm font-semibold text-gray-900'>
+                        <h3 className='text-sm font-semibold text-title'>
                             Company
                         </h3>
                         <ul className='mt-4 flex flex-col gap-3'>
@@ -106,7 +106,7 @@ const Footer = () => {
 
                     {/* contact info */}
                     <div>
-                        <h3 className='text-sm font-semibold text-gray-900'>
+                        <h3 className='text-sm font-semibold text-title'>
                             Contact
                         </h3>
                         <ul className='mt-4 flex flex-col gap-3'>

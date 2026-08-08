@@ -18,7 +18,7 @@ const IdeasPage = async () => {
 
   return (
     <div className="container mx-auto my-4">
-      <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
+      <h2 className="text-center text-4xl font-bold my-2 text-title">
         Ideas
       </h2>
 

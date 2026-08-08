@@ -53,8 +53,8 @@ const AddIdeaPage = () => {
 
   return (
     <div className="container mx-auto my-8">
-      <Card>
-        <h2 className="text-center text-2xl font-bold my-2 text-[#101828]">
+      <Card className="border">
+        <h2 className="text-center text-4xl font-bold my-2 text-title">
           Add Your Idea
         </h2>
         <form onSubmit={onSubmit} className="p-10 space-y-8">
@@ -63,7 +63,7 @@ const AddIdeaPage = () => {
             <div className="md:col-span-2">
               <TextField name="ideaTitle" isRequired>
                 <Label>Idea Title</Label>
-                <Input placeholder="Idea Title" className="rounded-2xl" />
+                <Input clas placeholder="Idea Title" className="rounded-2xl placeholder:text-title border border-gray-500" />
                 <FieldError />
               </TextField>
             </div>
@@ -72,7 +72,7 @@ const AddIdeaPage = () => {
              */}
             <TextField name="audience" isRequired>
               <Label>Target Audience</Label>
-              <Input placeholder="audience" className="rounded-2xl" />
+              <Input placeholder="audience" className="rounded-2xl placeholder:text-title border border-gray-500" />
               <FieldError />
             </TextField>
 
@@ -85,7 +85,7 @@ const AddIdeaPage = () => {
                 placeholder="Select category"
               >
                 <Label>Category</Label>
-                <Select.Trigger className="rounded-2xl">
+                <Select.Trigger className="rounded-2xl border border-gray-500">
                   <Select.Value />
                   <Select.Indicator />
                 </Select.Trigger>
@@ -128,7 +128,7 @@ const AddIdeaPage = () => {
                 <Input
                   type="number"
                   placeholder="1299"
-                  className="rounded-2xl"
+                  className="rounded-2xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>
@@ -141,7 +141,7 @@ const AddIdeaPage = () => {
                 <Input
                   type="url"
                   placeholder="https://example.com/bali-paradise.jpg"
-                  className="rounded-2xl"
+                  className="rounded-2xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>
@@ -153,7 +153,7 @@ const AddIdeaPage = () => {
                 <Label>Short Description</Label>
                 <TextArea
                   placeholder="Describe the short description..."
-                  className="rounded-3xl"
+                  className="rounded-3xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>
@@ -161,25 +161,23 @@ const AddIdeaPage = () => {
                 <Label>Detailed Description</Label>
                 <TextArea
                   placeholder="Describe the detailed description..."
-                  className="rounded-3xl"
+                  className="rounded-3xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>
               <TextField name="problemStatement" isRequired>
                 <Label>Problem Statement</Label>
                 <TextArea
-                  placeholder="Describe the problem statement
-..."
-                  className="rounded-3xl"
+                  placeholder="Describe the problem statement..."
+                  className="rounded-3xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>
               <TextField name="proposedSolution" isRequired>
                 <Label>Proposed Solution</Label>
                 <TextArea
-                  placeholder="Describe the proposed solution
-..."
-                  className="rounded-3xl"
+                  placeholder="Describe the proposed solution..."
+                  className="rounded-3xl placeholder:text-title border border-gray-500"
                 />
                 <FieldError />
               </TextField>

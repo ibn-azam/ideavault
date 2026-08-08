@@ -42,7 +42,7 @@ const IdeaDetailsPage = async ({ params }) => {
 
   return (
     <div>
-      <div className="max-w-4xl my-4 mx-4  sm:mx-auto flex justify-between items-center ">
+      <div className="max-w-4xl my-4 mx-4  sm:mx-auto flex justify-between items-center">
         <Link href={"/ideas"}>
           <Button
             variant="ghost"
@@ -57,7 +57,7 @@ const IdeaDetailsPage = async ({ params }) => {
           <DeleteDialog idea={idea} />
         </div>
       </div>
-      <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">
+      <Card className="max-w-4xl my-4 mx-4  sm:mx-auto backdrop-blur-md border">
         <Image
           className="rounded-t-lg w-full sm:h-100"
           src={imageUrl}
@@ -67,10 +67,10 @@ const IdeaDetailsPage = async ({ params }) => {
         />
         <div className="flex flex-1 flex-col gap-3 space-y-4">
           <Card.Header className="gap-1 mt-4">
-            <Card.Title className="pr-8 text-2xl font-semibold">
+            <Card.Title className="pr-8 text-3xl font-semibold">
               {ideaTitle}
             </Card.Title>
-            <Card.Description>{audience}</Card.Description>
+            <Card.Description className="text-title/60">{audience}</Card.Description>
             <div className="flex items-center gap-1 mt-4">
               <span className="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">
                 {category}
@@ -87,43 +87,43 @@ const IdeaDetailsPage = async ({ params }) => {
           >
             {/* Short Description */}
             <div className="mt-2">
-              <h3 className="font-semibold text-gray-700">Short Description</h3>
+              <h3 className="font-semibold text-title text-xl">Short Description</h3>
 
-              <p className="text-gray-600 text-sm mt-1 line-clamp-2">
+              <p className="text-title/80 text-md mt-1 line-clamp-2">
                 {shortDescription}
               </p>
             </div>
             {/* Detailed Description */}
             <div className="mt-2">
-              <h3 className="font-semibold text-gray-700">
+              <h3 className="text-xl font-semibold text-title">
                 Detailed Description
               </h3>
 
-              <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+              <p className="text-md text-title/80 line-clamp-2 mt-1">
                 {detailedDescription}
               </p>
             </div>
             {/* Problem */}
-            <div className="mt-4 p-3 rounded-lg bg-red-50">
+            <div className="mt-4 p-3 rounded-lg background border">
               <h4 className="font-semibold text-red-600">❗Problem</h4>
 
-              <p className="text-sm text-gray-600 line-clamp-2">
+              <p className="text-sm text-title/80 line-clamp-2">
                 {problemStatement}
               </p>
             </div>
 
             {/* Solution */}
-            <div className="mt-3 p-3 rounded-lg bg-green-50">
+            <div className="mt-3 p-3 rounded-lg background border">
               <h4 className="font-semibold text-green-600">✅ Solution</h4>
 
-              <p className="text-sm text-gray-600 line-clamp-2">
+              <p className="text-sm text-title/80 line-clamp-2">
                 {proposedSolution}
               </p>
             </div>
           </Card.Footer>
         </div>
       </Card>
-      <Card className="max-w-4xl my-4 mx-4  sm:mx-auto">
+      <Card className="max-w-4xl my-4 mx-4  sm:mx-auto border backdrop-blur-md">
         <h2 className="text-lg font-medium">Comment</h2>
         <CommnetBox idea={idea}/>
         <Comments idea={idea}/>

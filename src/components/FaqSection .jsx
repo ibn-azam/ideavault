@@ -89,22 +89,22 @@ const FaqSection = () => {
         <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[#4F46E5]/10">
           <Sparkles className="text-[#4F46E5]" size={20} />
         </div>
-        <h2 className="text-3xl font-bold text-[#101828] mb-2">
+        <h2 className="text-5xl font-bold text-title mb-2">
           Questions, answered
         </h2>
-        <p className="text-[#101828]/60 max-w-md mx-auto">
+        <p className="text-title/60 max-w-md mx-auto">
           Sorted by what you&apos;re actually asking about
         </p>
       </motion.div>
 
       {/* Category tabs */}
       <div className="flex justify-center mb-10">
-        <div className="flex flex-wrap justify-center gap-1 rounded-full border border-[#101828]/10 bg-[#101828]/[0.02] p-1">
+        <div className="flex flex-wrap justify-center gap-1 rounded-full border border/10 bg-[#101828]/[0.02] p-1 ">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
-              className="relative rounded-full px-4 py-2 text-sm font-medium transition-colors"
+              className="relative rounded-full px-4 py-2 text-sm font-medium transition-colors text-title"
             >
               {activeCategory === cat && (
                 <motion.span
@@ -115,7 +115,7 @@ const FaqSection = () => {
               )}
               <span
                 className={`relative z-10 ${
-                  activeCategory === cat ? 'text-white' : 'text-[#101828]/60'
+                  activeCategory === cat ? 'text-white' : 'text-title/60'
                 }`}
               >
                 {cat}
@@ -143,15 +143,15 @@ const FaqSection = () => {
                   key={id}
                   className={`rounded-2xl border transition-colors ${
                     isOpen
-                      ? 'border-[#4F46E5]/30 bg-[#4F46E5]/[0.03]'
-                      : 'border-[#101828]/10 bg-white'
+                      ? 'border-/30 bg-[#4F46E5]/[0.03]'
+                      : 'border-/10'
                   }`}
                 >
                   <button
                     onClick={() => setOpenId(isOpen ? null : id)}
                     className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   >
-                    <span className="text-[15px] font-medium text-[#101828]">
+                    <span className="text-[15px] font-medium text-title">
                       {question}
                     </span>
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#4F46E5]/10">
@@ -173,7 +173,7 @@ const FaqSection = () => {
                         transition={{ duration: 0.25, ease: 'easeOut' }}
                         className="overflow-hidden"
                       >
-                        <p className="px-5 pb-5 text-sm leading-relaxed text-[#101828]/60">
+                        <p className="px-5 pb-5 text-sm leading-relaxed text-title/60">
                           {answer}
                         </p>
                       </motion.div>

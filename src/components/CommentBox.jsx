@@ -57,7 +57,7 @@ export function CommnetBox({ idea }) {
       <TextArea
         name="comment"
         aria-label="Comment on ideavault project"
-        className="h-32 w-full"
+        className="h-30 w-full placeholder:text-title border border-gray-500"
         placeholder="Type Your Comment Here..."
       />
       <Button
